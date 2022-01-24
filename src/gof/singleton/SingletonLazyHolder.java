@@ -5,6 +5,7 @@ package gof.singleton;
  * @author JoaoRicardodeOA
  */
 public class SingletonLazyHolder {
+
     private static class InstanceHolder {
         public static SingletonLazyHolder instancia = new SingletonLazyHolder();
     }
