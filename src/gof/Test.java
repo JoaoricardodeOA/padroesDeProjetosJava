@@ -6,34 +6,41 @@ import gof.singleton.SingletonLazy;
 import gof.singleton.SingletonLazyHolder;
 import gof.strategy.*;
 
+import java.util.Scanner;
+
 public class Test {
     public static void main(String[] args) {
-        //Singleton
-        SingletonLazy lazy = SingletonLazy.getInstancia();
-        System.out.println(lazy);
-        lazy= SingletonLazy.getInstancia();
-        System.out.println(lazy);
+        Scanner in = new Scanner(System.in);
+        String nome, cep, dia;
+        User user =new User();
 
-        SingletonEager eager= SingletonEager.getInstancia();
-        System.out.println(eager);
 
-        SingletonLazyHolder lazyholder= SingletonLazyHolder.getInstancia();
-        System.out.println(lazyholder);
         // Strategy
-        Comportamento normal = new ComportamentoNormal();
-        Comportamento agressivo = new ComportamentoAgressivo();
-        Comportamento defensivo = new ComportamentoDefensivo();
+        Comportamento normal = new Normal();
+        Comportamento feliz = new Feliz();
+        Comportamento ruim = new Ruim();
 
-        Robo robo=new Robo();
-        robo.setComportamento(normal);
-        robo.mover();
-        robo.setComportamento(agressivo);
-        robo.mover();
-        robo.setComportamento(defensivo);
-        robo.mover();
+
 
         //Facade
-        Facade facade = new Facade();
-        facade.migrarCliente("joao", "00000-000");
+        Facade usuario1 = new Facade();
+        System.out.println("Bom dia recifense! qual é o seu nome?");
+        nome = in.next();
+        System.out.println("CEP?");
+        cep = in.next();
+        System.out.println("Como vai seu dia?(bom, feliz ou ruim)");
+        dia = in.next();
+        switch (dia){
+            case "bom":user.setComportamento(normal);
+            break;
+            case "feliz":user.setComportamento(feliz);
+            break;
+            case "ruim":user.setComportamento(ruim);
+            break;
+            default:
+                System.out.println("opção inválida");
+        }
+        usuario1.migrarCliente(nome, cep, user);
+
     }
 }

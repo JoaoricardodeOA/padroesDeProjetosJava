@@ -1,14 +1,19 @@
 package subsistema2.cep;
 
+import gof.strategy.User;
+
 public class Cep {
-    private static Cep instancia = new Cep();
+    //Singleton
+    private static class instanceHolder{
+        public static Cep instancia = new Cep();
+    }
 
     private Cep() {
         super();
     }
 
     public static Cep getInstancia() {
-        return instancia;
+        return instanceHolder.instancia;
     }
     public String recuperarCidade(String cep){
         return "Recife";

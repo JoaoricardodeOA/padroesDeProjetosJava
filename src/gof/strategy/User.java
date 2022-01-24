@@ -1,13 +1,13 @@
 package gof.strategy;
 
-public class Robo {
+public class User {
     private Comportamento comportamento;
 
     public void setComportamento(Comportamento comportamento) {
         this.comportamento = comportamento;
     }
-    public void mover(){
-        comportamento.mover();
+    public void estado(){
+        comportamento.estado();
     }
 
 
